@@ -1,0 +1,28 @@
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+.contact::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.contactInfo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.contactInfo span {
+  font-size: 20px;
+}
+
+.contactInfo button {
+  margin-left: 20px;
+}

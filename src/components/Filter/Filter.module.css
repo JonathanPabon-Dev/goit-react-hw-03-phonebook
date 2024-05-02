@@ -1,0 +1,12 @@
+.filterInput {
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.filterInput:focus,
+.filterInput:focus-visible,
+.filterInput:focus-within {
+  outline: none;
+  border: 1px solid #00bad3;
+}
