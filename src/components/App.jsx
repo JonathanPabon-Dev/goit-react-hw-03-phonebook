@@ -9,6 +9,18 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    if (localStorage.getItem('contacts') !== null) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -24,15 +36,18 @@ class App extends Component {
     );
   };
 
+  generateId = () => {
+    const randomId = Math.floor(Math.random() * 10000);
+    return randomId.toString().padStart(4, '0');
+  };
+
   handleAddContact = () => {
     if (this.contactExists(this.state.name)) {
       alert(`${this.state.name} is already in contacts.`);
     } else {
-      const generateId = () => Math.floor(Math.random() * 10000);
-
-      let newId = generateId();
+      let newId = this.generateId();
       while (this.idExists(newId)) {
-        newId = generateId();
+        newId = this.generateId();
       }
       const newContact = {
         id: `id-${newId}`,
